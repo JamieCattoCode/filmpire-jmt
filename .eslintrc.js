@@ -12,6 +12,11 @@ module.exports = {
   parserOptions: {
     ecmaVersion: 'latest',
     sourceType: 'module',
+    allowImportExportEverywhere: true,
+    ecmaFeatures: {
+      modules: true,
+      legacyDecorators: true,
+    },
   },
   plugins: [
     'react',
