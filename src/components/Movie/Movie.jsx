@@ -6,11 +6,10 @@ import useStyles from './styles';
 
 const Movie = ({ movie, key }) => {
   const classes = useStyles();
-  console.log(movie, key);
 
   return (
     <Grid item className={classes.movie} xs={12} sm={6} md={4} lg={3} xl={2}>
-      <Grow in key={key} timeout={(key + 1) * 250}>
+      <Grow in key={key}>
         <Link className={classes.links} to={`/movie/${movie.id}`}>
           <img
             alt={movie.title}
