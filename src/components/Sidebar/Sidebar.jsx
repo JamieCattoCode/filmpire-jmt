@@ -18,13 +18,6 @@ const categories = [
   { label: 'Upcoming', value: 'upcoming' },
 ];
 
-const demoCategories = [
-  { label: 'Comedy', value: 'comedy' },
-  { label: 'Action', value: 'action' },
-  { label: 'Horror', value: 'horror' },
-  { label: 'Animated', value: 'animated' },
-];
-
 const Sidebar = ({ setMobileOpen }) => {
   const theme = useTheme();
   const classes = useStyles();

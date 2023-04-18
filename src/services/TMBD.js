@@ -15,18 +15,19 @@ export const tmdbApi = createApi({
 
     // Get Movies by [Type]
     getMovies: builder.query({
-      query: ({ genreIdOrCategoryName, page }) => {
+      query: ({ genreIdOrCategoryName, page, searchQuery }) => {
+        // Get Movies by Search
+        if (searchQuery) {
+          return `/search/movie?query=${searchQuery}&page=${page}&api_key=${tmdbApiKey}`;
+        }
+
         // Get Movies by Category - Category names are strings e.g. 'popular, top_rated'
         if (genreIdOrCategoryName && typeof genreIdOrCategoryName === 'string') {
-          console.log('getting a movie by category');
           return `movie/${genreIdOrCategoryName}?api_key=${tmdbApiKey}&page=${page}`;
         }
 
-        console.log(genreIdOrCategoryName);
         // Get Movies by Genre - Genre IDs are numbers
         if (genreIdOrCategoryName && typeof genreIdOrCategoryName === 'number') {
-          console.log('getting a movie by genre');
-          //      discover/movie?api_key=<<api_key>>&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_watch_monetization_types=flatrate
           return `discover/movie?with_genres=${genreIdOrCategoryName}&page=${page}&api_key=${tmdbApiKey}`;
         }
 
